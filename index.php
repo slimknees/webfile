@@ -22,9 +22,22 @@
         // List uploaded files
         $files = glob('uploads/*');
         foreach ($files as $file) {
-            echo "<li><a href=\"download.php?file=" . urlencode($file) . "\">" . basename($file) . "</a></li>";
+            $fileName = basename($file);
+            echo "<li><a href=\"$file\" id=\"fileLink-$fileName\">$fileName</a> <button onclick=\"copyToClipboard('$file')\">Copy Link</button></li>";
         }
         ?>
     </ul>
+
+    <script>
+    function copyToClipboard(text) {
+        var tempInput = document.createElement("input");
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("Link copied to clipboard: " + text);
+    }
+    </script>
 </body>
 </html>
