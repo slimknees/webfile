@@ -23,7 +23,8 @@
         $files = glob('uploads/*');
         foreach ($files as $file) {
             $fileName = basename($file);
-            echo "<li><a href=\"$file\" id=\"fileLink-$fileName\">$fileName</a> <button onclick=\"copyToClipboard('$file')\">Copy Link</button></li>";
+            $fileURL = "https://files.pcclosure.net/$file"; // Construct full URL
+            echo "<li><a href=\"$fileURL\" id=\"fileLink-$fileName\">$fileName</a> <button onclick=\"copyToClipboard('$fileURL')\">Copy Link</button></li>";
         }
         ?>
     </ul>
