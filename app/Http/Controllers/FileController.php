@@ -1,18 +1,20 @@
 // app/Http/Controllers/FileController.php
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
-public function download(Request $request)
+class FileController extends Controller
 {
-    $file = $request->input('file');
+    public function index()
+    {
+        // Your file management logic goes here
+        $files = Storage::files('public');
 
-    // Check if file exists
-    if (Storage::exists($file)) {
-        // Return file download response
-        return Storage::download($file);
-    } else {
-        // Handle file not found
-        return response()->json(['error' => 'File not found'], 404);
+        // Return view with data
+        return view('files.index', ['files' => $files]);
     }
+
+    // Other controller methods (if any) can go here
 }
