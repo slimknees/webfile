@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 // Define routes for your application
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // Other routes for file management, authentication, etc. can be defined here
